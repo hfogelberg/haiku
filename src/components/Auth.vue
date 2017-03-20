@@ -18,6 +18,8 @@
 </template>
 
 <script>
+  let axios = require('axios');
+
   export default {
     data() {
       return {
@@ -27,7 +29,19 @@
     },
     methods: {
       signup() {
-        console.log(username + ' ' + password);
+        alert('Signup');
+        console.log(this.username + ' ' + this.password);
+
+        axios.post('http://localhost:8080/api/users', {
+          username: this.username,
+          password: this.password
+        })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err)=> {
+          console.log(err);
+        });
       }
     }
   }

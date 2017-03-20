@@ -4,7 +4,7 @@ var express = require('express'),
       fs = require('fs'),
       cors = require('cors'),
       bodyParser = require('body-parser'),
-      mongoose = require('mongoose'),
+      mongoose = require('./server/db/mongoose'),
       {api} = require('./server/api/api'),
       port = process.env.port || 8080;
 

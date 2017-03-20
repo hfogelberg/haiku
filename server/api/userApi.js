@@ -7,15 +7,16 @@ let userApi = (app, mongoose) => {
   app.post('/api/users', (req, res)=>{
     console.log('POST users', req.body);
 
-    let email = req.body.email;
+    let username = req.body.username;
     let password = req.body.password;
 
-    var user = new User({email, password});
+    var user = new User({username, password});
+    console.log('User', user);
 
     user.save().then(() => {
+      console.log('User saved');
       return user.generateAuthToken();
     }).then((token) => {
-      console.log('Sign up OK! Token: ' + token + ' userId ' + user._id);
       res.send({
         token: token,
         userId: user._id
@@ -23,8 +24,7 @@ let userApi = (app, mongoose) => {
     }).catch((e) => {
       errLogger(e)
        .then(() => {
-        console.log("******* Error signing up. ", e);
-        console.log('E.code: ' + e.code);
+        console.log("Error signing up",  e);
         if (e.code == 11000) {
           res.status(409).send();
         } else {
@@ -53,7 +53,6 @@ let userApi = (app, mongoose) => {
           console.log(err);
           res.status(500).send
         });
-
   });
 
   app.post('/api/users/signoutall', authenticate, (req, res) =>{
@@ -70,8 +69,8 @@ let userApi = (app, mongoose) => {
       .catch((err)=>{
         console.log(err);
         res.status(500).send
-      })
-  })
+      });
+  });
 
   // POST - login
   app.post('/api/users/login', (req, res) => {

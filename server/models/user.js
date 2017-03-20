@@ -7,16 +7,12 @@ const mongoose = require('mongoose'),
 
 
       const UserSchema = new mongoose.Schema({
-        email: {
+        username: {
           type: String,
           required: true,
           trim: true,
           minlength: 1,
-          unique: [true, 'User already exists'],
-          validate: {
-            validator: validator.isEmail,
-            message: '{VALUE} is not a valid email'
-          }
+          unique: [true, 'User already exists']
         },
         password: {
           type: String,
@@ -56,10 +52,11 @@ const mongoose = require('mongoose'),
       };
 
       UserSchema.methods.generateAuthToken = function () {
+        console.log('generateAuthToken');
         var user = this;
         var access = 'auth';
         var token = jwt.sign({_id: user._id.toHexString(), access}, HASH_SECRET).toString();
-
+        console.log('Token: ' +  token);
         user.tokens.push({access, token});
 
         return user.save().then(() => {

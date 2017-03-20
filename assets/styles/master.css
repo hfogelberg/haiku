@@ -1,0 +1,109 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
+  background-color: #bdc3c7;
+  color: #ecf0f1;
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+/* Page layout */
+.content {
+  display: flex;
+  -webkit-flex: row-wrap;
+  -ms-flex: row-wrap;
+  flex: row-wrap;
+  width: 100vw;
+  height: 100%;
+  margin: 0 -0.5em;
+}
+
+/* Fonts */
+h1 {
+  text-align: center;
+  font-size: 4em;
+  letter-spacing: 2px;
+  word-spacing: 4px;
+  margin-bottom: 20px;
+}
+
+/* Map */
+#map {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  height: 400px;
+  width: 800px;
+}
+
+/* Buttons */
+.btn-transparent {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.btn-open-location {
+  color: #ecf0f1;
+  font-size: 1.3em;
+}
+
+ul.button-row {
+  list-style: none;
+  display: flex;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+li {
+  flex: 0 0 auto;
+  margin: 0.2em;
+}
+
+li:nth-child(1) {
+  margin-right: auto;
+}
+
+/* Menu */
+@media ( max-width: 700px ) {
+  .locations-list {
+    background-color: red;
+    height: 100%
+  }
+
+  .main {
+    background-color: white;
+    height: 100%;
+  }
+}
+
+@media ( min-width: 701px ) {
+  .locations-list {
+    flex: 0.3;
+    background-color: green;
+    height: 100%
+  }
+
+  .main {
+    flex: 0.7;
+    background-color: blue;
+    height: 100%;
+  }
+}

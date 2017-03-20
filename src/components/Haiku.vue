@@ -1,5 +1,5 @@
 <template lang="html">
-  <h1>Auth</h1>
+  <h1>Haiku</h1>
 </template>
 
 <script>

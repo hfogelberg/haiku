@@ -1,0 +1,8 @@
+$(now): GET /api
+$(now): GET /api
+$(now): GET /api/
+Mon Mar 20 2017 08:48:19 GMT+0000 (WET): GET /api/
+Mon Mar 20 2017 08:48:40 GMT+0000 (WET): GET /api/
+Mon Mar 20 2017 08:49:38 GMT+0000 (WET): GET /api/
+Mon Mar 20 2017 08:49:43 GMT+0000 (WET): GET /api/
+Mon Mar 20 2017 08:49:51 GMT+0000 (WET): GET /api/

@@ -29,15 +29,30 @@
     },
     methods: {
       signup() {
-        alert('Signup');
-        console.log(this.username + ' ' + this.password);
-
         axios.post('http://localhost:8080/api/users', {
           username: this.username,
           password: this.password
         })
         .then((res) => {
           console.log(res);
+          let data = res.data;
+          let token = data.token;
+          let userId = data.userId;
+
+          console.log('Token: ' + token);
+          console.log('UserId:  ' + userId);
+
+          localStorage.setItem('haikuUserName', this.username);
+          localStorage.setItem('haikuUserId', userId);
+          localStorage.setItem('haikuToken', token);
+
+          let payload = {
+            token: token,
+            userName: this.username,
+            userId: userId
+          }
+          
+          this.$store.dispatch('setUser', payload);
         })
         .catch((err)=> {
           console.log(err);

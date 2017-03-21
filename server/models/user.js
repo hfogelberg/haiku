@@ -64,10 +64,10 @@ const mongoose = require('mongoose'),
         });
       };
 
-      UserSchema.statics.findByCredentials = function (email, password) {
+      UserSchema.statics.findByCredentials = function (username, password) {
         var User = this;
 
-        return User.findOne({email})
+        return User.findOne({username})
             .then((user) => {
               if (!user) {
                 console.log('No user');
@@ -75,7 +75,7 @@ const mongoose = require('mongoose'),
               }
 
               return new Promise((resolve, reject) => {
-                console.log(`findByCredentials email: ${email}, user.password: ${user.email}`);
+                console.log(`findByCredentials username: ${username}, user.password: ${user.email}`);
                 bcrypt.compare(password, user.password, (err, res) => {
                   if (res) {
                     console.log('Password OK');

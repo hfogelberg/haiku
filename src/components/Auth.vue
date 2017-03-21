@@ -11,7 +11,7 @@
         <input type="text" name="password" id="password" v-model="password">
       </div>
       <div>
-        <button type="button" name="button" id="save" @click="signup">Save</button>
+        <button type="button" name="button" id="save" @click="login">Save</button>
       </div>
     </form>
   </div>
@@ -28,8 +28,8 @@
       }
     },
     methods: {
-      signup() {
-        axios.post('http://localhost:8080/api/users', {
+      login() {
+        axios.post('http://localhost:8080/api/login', {
           username: this.username,
           password: this.password
         })
@@ -51,7 +51,32 @@
             userName: this.username,
             userId: userId
           }
-          
+
+          this.$store.dispatch('setUser', payload);
+        })
+        .catch((err)=> {
+          console.log(err);
+        });
+      },
+
+      signup() {
+        axios.post('http://localhost:8080/api/users', {
+          username: this.username,
+          password: this.password
+        })
+        .then((res) => {
+          let data = res.data;
+
+          localStorage.setItem('haikuUserName', this.username);
+          localStorage.setItem('haikuUserId', res.data.userId);
+          localStorage.setItem('haikuToken', res.data.token);
+
+          let payload = {
+            token: token,
+            userName: this.username,
+            userId: userId
+          }
+
           this.$store.dispatch('setUser', payload);
         })
         .catch((err)=> {

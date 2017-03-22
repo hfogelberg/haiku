@@ -5,11 +5,11 @@
   "author": "Henrik Fogelberg <henrik.fogelberg@gmail.com>",
   "private": true,
   "scripts": {
-    "dev-app": "npm run haiku_server | npm run haiku",
+    "dev": "npm run haiku_server | npm run haiku",
     "server": "nodemon index.js",
     "haiku_server": "pm2 start index.js --watch --name 'haiku_server' --trace",
     "haiku": "cross-env NODE_ENV=development pm2 start webpack-dev-server  --name haiku -- --open --hot",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+    "dev_old": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {

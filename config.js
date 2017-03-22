@@ -1,0 +1,5 @@
+module.exports = {
+  "CLOUDINARY_CLOUD_NAME": "golizzard",
+  "CLOUDINARY_API_KEY": "925374862654622",
+  "CLOUDINARY_API_SECRET": "doHBawwQUw7L2vYVKq5Dl9wbdUE",
+}

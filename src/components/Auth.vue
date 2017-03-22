@@ -29,30 +29,25 @@
     },
     methods: {
       login() {
-        axios.post('http://localhost:8080/api/login', {
+        axios.post('http://localhost:8081/api/users/login', {
           username: this.username,
           password: this.password
         })
         .then((res) => {
-          console.log(res);
           let data = res.data;
-          let token = data.token;
-          let userId = data.userId;
-
-          console.log('Token: ' + token);
-          console.log('UserId:  ' + userId);
 
           localStorage.setItem('haikuUserName', this.username);
-          localStorage.setItem('haikuUserId', userId);
-          localStorage.setItem('haikuToken', token);
+          localStorage.setItem('haikuUserId', data.userId);
+          localStorage.setItem('haikuToken', data.token);
 
           let payload = {
-            token: token,
+            token: data.token,
             userName: this.username,
-            userId: userId
+            userId: data.userId
           }
 
           this.$store.dispatch('setUser', payload);
+          this.$router.push('/admin');
         })
         .catch((err)=> {
           console.log(err);
@@ -60,7 +55,7 @@
       },
 
       signup() {
-        axios.post('http://localhost:8080/api/users', {
+        axios.post('http://localhost:8081/api/users', {
           username: this.username,
           password: this.password
         })

@@ -1,20 +1,27 @@
 <template lang="html">
   <div>
-    <h1>Haiku</h1>
-
-    <ul>
-      <li v-for='image in images'>{{image.title}}</li>
-    </ul>
+    <header></header>
+    <div id="wrapper">
+      <ul>
+        <li v-for='haiku in haikus'><haikuItem :haiku='haiku'></haikuItem></li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import HaikuItem from './HaikuItem.vue';
+import Header from './Header.vue'
 
 export default {
+  components: {
+    header: Header,
+    haikuItem: HaikuItem
+  },
   data(){
     return {
-      images: []
+      haikus: []
     }
   },
   created() {
@@ -28,7 +35,7 @@ export default {
           .then((res)=>{
             console.log(res);
             let data = res.data
-            this.images = data.images
+            this.haikus = data.images
           })
           .catch((err)=>{
             console.log(err);

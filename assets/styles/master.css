@@ -10,8 +10,8 @@ html {
   font-size: 16px;
   font-weight: 300;
   text-rendering: optimizeLegibility;
-  background-color: #bdc3c7;
-  color: #ecf0f1;
+  background-color: #ecf0f1;
+  font-family: 'Lato', sans-serif;
 }
 
 body, html {

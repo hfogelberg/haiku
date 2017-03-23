@@ -1,9 +1,9 @@
 <template lang="html">
   <header>
     <ul>
-      <li><h1>Helenas Haiku</h1><li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><h1><router-link to='/'>Helenas Haiku</router-link></h1><li>
+      <li><router-link to='/about'>About</router-link></li>
+      <li><router-link to='/contact'>Contact</router-link></li>
     </ul>
   </header>
 </template>

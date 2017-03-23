@@ -48,6 +48,7 @@ export default {
 
 .haiku-container {
   flex: 0.2;
+  white-space: pre-wrap;
 }
 
 h2 {
@@ -74,13 +75,6 @@ img {
   border-radius: 20px;
 }
 
-.haiku-container {
-  white-space: pre-wrap;
-}
-
-.modal-text {
-  white-space: pre-wrap;
-}
 
 p.haiku {
   font-size: 1.8em;

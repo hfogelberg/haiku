@@ -1,6 +1,5 @@
 <template lang="html">
   <div>
-    <appHeader></appHeader>
     <div id="wrapper">
       <ul>
         <li v-for='haiku in haikus'><haikuItem :haiku='haiku'></haikuItem></li>
@@ -12,11 +11,9 @@
 <script>
 import axios from 'axios';
 import HaikuItem from './HaikuItem.vue';
-import Header from './Header.vue'
 
 export default {
   components: {
-    'appHeader': Header,
     'haikuItem': HaikuItem
   },
   data(){

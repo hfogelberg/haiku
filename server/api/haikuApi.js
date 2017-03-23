@@ -4,6 +4,19 @@ let haikuApi = (app, mongoose, settings) => {
         {errLogger} = require('../utils/errLogger'),
         {authenticate} = require('../middleware/authenticate');
 
+  // GET images
+  app.get('/api/haiku', (req, res)=>{
+    console.log('GET haiku');
+    Image.find({display: true}).sort({isPriority: 1, created: 1})
+      .then((images)=>{
+        res.send({message: 'OK', images: images})
+      })
+      .catch((err)=>{
+        console.log('Error finding images', err);
+        res.status(404).send(e);
+      });
+  })
+
   // POST new image
   app.post('/api/haiku', authenticate, (req, res) => {
     console.log('POST haiku');

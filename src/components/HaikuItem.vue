@@ -4,14 +4,21 @@
       <h2>{{haiku.title}}</h2>
     </div>
     <div class='image-container'>
-      <img class= 'artwork' :src="'http://res.cloudinary.com/ginkgo/image/upload/w_400,c_fill/' + haiku.imagePath" v-bind:alt="haiku.title">
-       <!-- <span>
+      <img class= 'artwork' :src="'http://res.cloudinary.com/ginkgo/image/upload/w_500,c_fill/' + haiku.imagePath" v-bind:alt="haiku.title">
+       <span>
          <a class="btn-info" href="#open-modal"><img src='/assets/img/info.svg'></a>
-        </span> -->
+        </span>
     </div>
     <div class='haiku-container'>
        <p class='haiku'>{{haiku.haiku}}</p>
     </div>
+
+    <div id="open-modal" class="modal-window">
+      <div>
+        <a href="#modal-close" title="Close" class="modal-close">X</a>
+        <div class='modal-text'>{{haiku.comment}}</div>
+       </div>
+     </div>
   </div>
 </template>
 
@@ -21,16 +28,15 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 .panel {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 1em;
 }
 
 .header-container {
-  flex: 0.2;
+  flex: 0.1;
 }
 
 .image-container {
@@ -69,6 +75,10 @@ img {
 }
 
 .haiku-container {
+  white-space: pre-wrap;
+}
+
+.modal-text {
   white-space: pre-wrap;
 }
 

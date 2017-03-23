@@ -1,17 +1,15 @@
 <template lang="html">
   <header>
-      <ul>
-        <li>
-          <h1>Helenas Haiku</h1>
-        <li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </header>
+    <ul>
+      <li><h1>Helenas Haiku</h1><li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </header>
 </template>
 
 
-<style lang="css">
+<style lang="css" scoped>
   header {
     position: fixed;
     top:0;
@@ -41,4 +39,32 @@
   li:nth-child(1) {
     margin-right: auto;
   }
+
+  a {
+    font-size: 1.2em;
+    color: rgba(236, 240, 241,1.0);
+    font-weight: 300;
+  }
+
+  a:hover {
+    font-size: 1.4em;
+    text-decoration: none;
+  }
+
+  a:link {
+    text-decoration: none;
+  }
+
+  a:visited{
+    text-decoration: none;
+  }
+
+  a:focus {
+    text-decoration: none;
+  }
+
+  a:active {
+    text-decoration: none;
+  }
+
 </style>

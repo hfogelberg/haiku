@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <header></header>
+    <appHeader></appHeader>
     <div id="wrapper">
       <ul>
         <li v-for='haiku in haikus'><haikuItem :haiku='haiku'></haikuItem></li>
@@ -16,8 +16,8 @@ import Header from './Header.vue'
 
 export default {
   components: {
-    header: Header,
-    haikuItem: HaikuItem
+    'appHeader': Header,
+    'haikuItem': HaikuItem
   },
   data(){
     return {

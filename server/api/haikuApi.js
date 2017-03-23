@@ -1,11 +1,14 @@
 let haikuApi = (app, mongoose, settings) => {
   var {Image} = require('../models/image'),
+        cors = require('cors'),
         {errLogger} = require('../utils/errLogger'),
         {authenticate} = require('../middleware/authenticate');
 
   // POST new image
   app.post('/api/haiku', authenticate, (req, res) => {
     console.log('POST haiku');
+    console.log('Header', req.header);
+
     let title = req.body.title;
     let imagePath = req.body.imagePath;
     let haiku = req.body.haiku;

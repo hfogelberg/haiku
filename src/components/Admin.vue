@@ -9,7 +9,10 @@
       </div>
       <div>
         <label for="image-path">Image path</label>
-        <input type="text" name="image-path" id="image-path" v-model="imagePath">
+        <input type="text" name="image-path" id="image-path" v-model="imagePath" v-on:change="setImgUrl">
+      </div>
+      <div class='thumb'>
+        <img :src="imageUrl" v-bind:alt="title">
       </div>
       <div>
         <label for="haiku">Haiku/verse</label>
@@ -43,6 +46,7 @@ export default {
     return {
       title: '',
       imagePath: '',
+      imageUrl: '',
       haiku: '',
       comment: '',
       isPriority: false,
@@ -51,26 +55,39 @@ export default {
     }
   },
   methods: {
+    setImgUrl() {
+      alert('setImgUrl')
+      let root = 'http://res.cloudinary.com/ginkgo/image/upload/w_180/'
+      this.imageUrl = root + this.imagePath
+      alert(this.imageUrl)
+    },
     save() {
-      axios.post('http://localhost:8080/api/haiku',
-      {headers: {'x-auth': this.$store.getters.token}},
-      {
-        title: this.title,
-        imagePath: this.imagePath,
-        haiku: this.haiku,
-        comment: this.comment,
-        isPriority: this.isPriority,
-        display: this.display,
-        created: this.created
-      })
-      .then((res)=>{
-        console.log(res);
-      })
-      .catch((err)=>{
-        console.log(err);
-      });
+      let token = localStorage.getItem('haikuToken');
+      axios.defaults.headers.common ['x-auth']  = token
+      axios.post('http://localhost:8081/api/haiku', {
+          title: this.title,
+          imagePath: this.imagePath,
+          haiku: this.haiku,
+          comment: this.comment,
+          isPriority: this.isPriority,
+          display: this.display,
+          created: this.created
+        })
+        .then((res)=>{
+          console.log(res);
+          this.title = '';
+          this.imagePath = '';
+          this.haiku = '';
+          this.comment = '';
+          this.isPriority = false;
+          this.display = true;
+          this.imageUrl = '';
+        })
+        .catch((err)=>{
+          console.log(err);
+        });
+      }
     }
-  }
 }
 </script>
 

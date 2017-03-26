@@ -7,6 +7,7 @@
       <img class= 'artwork' :src="'http://res.cloudinary.com/ginkgo/image/upload/w_500,c_fill/' + haiku.imagePath" v-bind:alt="haiku.title">
        <span>
          <a class="btn-info" href="#open-modal"><img src='/assets/img/info.svg'></a>
+         <router-link to='/edit'><img src='/assets/img/pencil.svg'></router-link>
         </span>
     </div>
     <div class='haiku-container'>
@@ -24,7 +25,12 @@
 
 <script>
 export default {
-  props: ['haiku']
+  props: ['haiku'],
+  data() {
+    return {
+      token: localStorage.getItem('haikuToken')
+    }
+  }
 }
 </script>
 

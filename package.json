@@ -5,6 +5,7 @@
   "author": "Henrik Fogelberg <henrik.fogelberg@gmail.com>",
   "private": true,
   "scripts": {
+    "start": "node index.js",
     "dev": "npm run haiku_server | npm run haiku",
     "server": "nodemon index.js",
     "haiku_server": "pm2 start index.js --watch --name 'haiku_server' --trace",

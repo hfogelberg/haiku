@@ -1,5 +1,7 @@
 <template lang="html">
-  <h1>About</h1>
+  <div class='container'>
+    <h1>About</h1>
+  </div>
 </template>
 
 <script>
@@ -7,5 +9,8 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
+  .container {
+    margin-top: 5em;
+  }
 </style>

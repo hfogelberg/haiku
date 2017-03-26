@@ -1,6 +1,5 @@
 var express = require('express'),
       app = express(),
-      cloudinary = require('cloudinary'),
       fs = require('fs'),
       cors = require('cors'),
       bodyParser = require('body-parser'),

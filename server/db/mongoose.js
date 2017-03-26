@@ -4,7 +4,8 @@ var mongoose = require('mongoose'),
 // Set up Mongo
 // mongoose.Promise = global. Promise;
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://localhost:27017');
+//mongoose.connect('mongodb://localhost:27017/haiku');
+mongoose.connect('mongodb://172.17.0.5');
 mongoose.connection
     .once('open', () => {console.log('DB connection open');})
     .on('error', (err)=>{console.log('Warning', err);});

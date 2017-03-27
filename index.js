@@ -6,7 +6,7 @@ var express = require('express'),
       mongoose = require('./server/db/mongoose'),
       {api} = require('./server/api/api'),
       settings = require('./config'),
-      port = process.env.port || 8081;
+      port = process.env.PORT || 8081;
 
 app.use(cors());
 app.use(bodyParser.json());

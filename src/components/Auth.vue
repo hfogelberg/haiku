@@ -1,6 +1,5 @@
 <template lang="html">
-  <div>
-    <h1>Auth</h1>
+  <div class='auth'>
     <form>
       <div>
         <label for="username">Username</label>
@@ -10,7 +9,7 @@
         <label for="password">Password</label>
         <input type="text" name="password" id="password" v-model="password">
       </div>
-      <div>
+      <div class='button-container'>
         <button type="button" name="button" id="save" @click="login">Save</button>
       </div>
     </form>
@@ -19,6 +18,7 @@
 
 <script>
   let axios = require('axios');
+  let port = process.env.PORT || 8081;
 
   export default {
     data() {
@@ -29,7 +29,7 @@
     },
     methods: {
       login() {
-        axios.post('http://localhost:8081/api/users/login', {
+        axios.post(port + '/api/users/login', {
           username: this.username,
           password: this.password
         })
@@ -83,4 +83,17 @@
 </script>
 
 <style lang="css">
+  .auth {
+    margin-top: 8em;
+  }
+
+  form {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  button {
+    margin-top: 1em;
+    margin-left: 0.5em;
+  }
 </style>

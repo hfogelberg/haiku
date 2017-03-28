@@ -15,7 +15,7 @@ form label {
   display: inline-block;
   width: 10ch;
   text-align: right;
-  margin-right: 1em;
+  margin-right: 1ch;
   font-size: 1.4em;
 }
 
@@ -38,6 +38,11 @@ textarea {
   padding-bottom: 0.5em;
   vertical-align: top;
   height: 5em;
+}
+
+.button-container {
+  margin-left: 0.5em;
+  box-sizing: border-box;
 }
 
 button#save {

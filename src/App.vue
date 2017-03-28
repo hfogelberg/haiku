@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <appHeader></appHeader>
-    <h1> Helena Fogelberg </h1>
     <router-view></router-view>
   </div>
 </template>

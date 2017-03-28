@@ -6,14 +6,15 @@ var express = require('express'),
       mongoose = require('./server/db/mongoose'),
       {api} = require('./server/api/api'),
       settings = require('./config'),
+      history = require('connect-history-api-fallback'),
       port = process.env.PORT || 8081;
 
 app.use(cors());
+app.use(history);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', express.static(__dirname + '/'));
 api(app, mongoose, settings );
-
 
 app.use((req, res, next) => {
   const now = new Date().toString();

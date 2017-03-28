@@ -1,9 +1,7 @@
 var mongoose = require('mongoose');
-// var  bluebird = require('bluebird');
 
 // Set up Mongo
 mongoose.Promise = global. Promise;
-//mongoose.Promise = require('bluebird');
 // localhost
 mongoose.connect('mongodb://localhost:27017/haiku');
 // Dokku

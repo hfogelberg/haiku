@@ -55,7 +55,7 @@
       },
 
       signup() {
-        axios.post('http://localhost:8081/api/users', {
+        axios.post(port + '/api/users', {
           username: this.username,
           password: this.password
         })

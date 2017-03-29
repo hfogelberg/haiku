@@ -51,7 +51,7 @@
           }
 
           this.$store.dispatch('setUser', payload);
-          this.$router.push('/admin');
+          this.$router.push('/new-haiku');
         })
         .catch((err)=> {
           alert(err)

@@ -32,17 +32,6 @@ body, html {
   margin: 0 -0.5em;
 }
 
-.adminForm {
-  position: absolute;
-  margin: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 60%;
-  height: 60%
-}
-
 /* Fonts */
 h1 {
   text-align: center;

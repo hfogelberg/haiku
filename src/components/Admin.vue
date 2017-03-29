@@ -55,7 +55,23 @@ export default {
       created: new Date()
     }
   },
+  mounted() {
+    if (this.hasToken() === false) {
+      this.$router.push('/auth')
+    }
+  },
   methods: {
+    hasToken() {
+      let token = localStorage.getItem('haikuToken');
+
+      if (token) {
+        console.log('Has Token');
+        return true;
+      } else {
+        console.log('No token');
+        return false;
+      }
+    },
     setImgUrl() {
       alert('setImgUrl')
       let root = 'http://res.cloudinary.com/ginkgo/image/upload/w_180/'

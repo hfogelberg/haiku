@@ -11,7 +11,7 @@
 <script>
 import axios from 'axios';
 import HaikuItem from './HaikuItem.vue';
-let port = process.env.PORT || 8081;
+let {API_ROOT_URL} = require('../../config')
 
 export default {
   components: {
@@ -28,8 +28,9 @@ export default {
   methods: {
     getImages() {
       console.log('getImages');
+      let url = API_ROOT_URL + '/haiku';
 
-      axios.get(port + '/api/haiku')
+      axios.get(url)
           .then((res)=>{
             console.log(res);
             let data = res.data

@@ -1,7 +1,5 @@
 <template lang="html">
   <div class="admin">
-    <h1>Admin</h1>
-
     <form class="adminForm">
       <div>
         <label for="title">Title</label>
@@ -40,6 +38,9 @@
 
 <script>
 var axios = require('axios');
+if (process.env.NODE_ENV === 'development') {
+  let root = 'http://localhost:8081/api/'
+}
 
 export default {
   data() {
@@ -64,7 +65,7 @@ export default {
     save() {
       let token = localStorage.getItem('haikuToken');
       axios.defaults.headers.common ['x-auth']  = token
-      axios.post('http://localhost:8081/api/haiku', {
+      axios.post(root + 'haiku', {
           title: this.title,
           imagePath: this.imagePath,
           haiku: this.haiku,

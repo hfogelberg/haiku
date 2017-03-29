@@ -10,7 +10,8 @@
         <input type="text" name="password" id="password" v-model="password">
       </div>
       <div class='button-container'>
-        <button type="button" name="button" id="save" @click="login">Save</button>
+        <button type="button" name="button" @click="login" class='btn btn-login'>Login</button>
+        <button type="button" name="button" @click="signup" class='btn btn-signup'>Signup</button>
       </div>
     </form>
   </div>
@@ -18,7 +19,7 @@
 
 <script>
   let axios = require('axios');
-  let port = process.env.PORT || 8081;
+  let {API_ROOT_URL} = require('../../config')
 
   export default {
     data() {
@@ -29,7 +30,10 @@
     },
     methods: {
       login() {
-        axios.post(port + '/api/users/login', {
+        let url = API_ROOT_URL + '/users/login';
+        console.log(url);
+
+        axios.post(url, {
           username: this.username,
           password: this.password
         })
@@ -50,12 +54,13 @@
           this.$router.push('/admin');
         })
         .catch((err)=> {
+          alert(err)
           console.log(err);
         });
       },
 
       signup() {
-        axios.post(port + '/api/users', {
+        axios.post(root + '/users/signup', {
           username: this.username,
           password: this.password
         })
@@ -92,8 +97,23 @@
     margin: 0 auto;
   }
 
-  button {
+  .btn {
     margin-top: 1em;
     margin-left: 0.5em;
+    font-size: 1.3em;
+    margin-left: 11ch;
+    height: 2em;
+    width: 10ch;
+    color: #ecf0f1;
+    border-radius: 10px;
+  }
+
+  .btn-login {
+    background-color: #f39c12;
+    margin-right: 0.7em;
+  }
+
+  .btn-signup {
+    background-color: #2ecc71;
   }
 </style>

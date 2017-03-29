@@ -75,7 +75,7 @@ const mongoose = require('mongoose'),
               }
 
               return new Promise((resolve, reject) => {
-                console.log(`findByCredentials username: ${username}, user.password: ${user.email}`);
+                console.log(`findByCredentials username: ${username}, password: ${password}`);
                 bcrypt.compare(password, user.password, (err, res) => {
                   if (res) {
                     console.log('Password OK');

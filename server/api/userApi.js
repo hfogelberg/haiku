@@ -4,14 +4,14 @@ let userApi = (app, mongoose) => {
         {authenticate} = require('../middleware/authenticate');
 
   // POST - sign up
-  app.post('/api/users', (req, res)=>{
+  app.post('/api/users/signup', (req, res)=>{
     console.log('POST users', req.body);
 
     let username = req.body.username;
     let password = req.body.password;
 
     var user = new User({username, password});
-    console.log('User', user);
+    console.log('Sign up user', user);
 
     user.save().then(() => {
       console.log('User saved');
@@ -96,11 +96,6 @@ let userApi = (app, mongoose) => {
                res.status(400).send();
              }
            });
-  });
-
-  // GET me. Authenticated route
-  app.get('/api/me', authenticate, (req, res) =>{
-    res.send({'message': 'Authenticated'});
   });
 }
 

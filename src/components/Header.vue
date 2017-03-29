@@ -2,6 +2,8 @@
   <header>
     <ul>
       <li><h1><router-link to='/'>Helenas Haiku</router-link></h1><li>
+
+      <li><router-link to='/auth' class='auth'>Auth</router-link></li>
       <li><router-link to='/about'>About</router-link></li>
       <li><router-link to='/contact'>Contact</router-link></li>
     </ul>
@@ -44,6 +46,15 @@
     font-size: 1.2em;
     color: rgba(236, 240, 241,1.0);
     font-weight: 300;
+  }
+
+  a.auth {
+    opacity: 0;
+    margin-right: 3em;
+  }
+
+  a.auth:hover {
+    opacity: 1;
   }
 
   a:hover {

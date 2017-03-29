@@ -5,10 +5,10 @@
     </div>
     <div class='image-container'>
       <img class= 'artwork' :src="'http://res.cloudinary.com/ginkgo/image/upload/w_500,c_fill/' + haiku.imagePath" v-bind:alt="haiku.title">
-       <span>
+       <!-- <span>
          <a class="btn-info" href="#open-modal"><img src='/assets/img/info.svg'></a>
          <router-link to='/edit'><img src='/assets/img/pencil.svg'></router-link>
-        </span>
+        </span> -->
     </div>
     <div class='haiku-container'>
        <p class='haiku'>{{haiku.haiku}}</p>

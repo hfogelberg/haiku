@@ -14,7 +14,7 @@ winston.add(
     filename: 'default.log',
     level: 'info',
     json: true,
-    eol: 'n',
+    eol: 'rn',
     timestamp: true
   }
 )

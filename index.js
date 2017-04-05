@@ -43,7 +43,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', express.static(__dirname + '/'));
 api(app, mongoose, winston );
 
-
 // Logging api calls
 app.use((req, res, next) => {
   const now = new Date().toString();

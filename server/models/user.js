@@ -34,7 +34,7 @@ const mongoose = require('mongoose'),
       });
 
       UserSchema.statics.findByToken = function(token) {
-        console.log('findByToken', token);
+        winston.log('findByToken', token);
         var User = this;
         var decoded;
         try {
@@ -43,7 +43,7 @@ const mongoose = require('mongoose'),
           return Promise.reject();
         }
 
-        console.log('_id', decoded._id);
+        winston.log('_id', decoded._id);
 
         return User.findOne({
           '_id': decoded._id,
@@ -52,11 +52,11 @@ const mongoose = require('mongoose'),
       };
 
       UserSchema.methods.generateAuthToken = function () {
-        console.log('generateAuthToken');
+        winston.log('generateAuthToken');
         var user = this;
         var access = 'auth';
         var token = jwt.sign({_id: user._id.toHexString(), access}, HASH_SECRET).toString();
-        console.log('Token: ' +  token);
+        winston.log('Token: ' +  token);
         user.tokens.push({access, token});
 
         return user.save().then(() => {
@@ -70,25 +70,25 @@ const mongoose = require('mongoose'),
         return User.findOne({username})
             .then((user) => {
               if (!user) {
-                console.log('No user');
+                winston.log('No user');
                 return Promise.reject();
               }
 
               return new Promise((resolve, reject) => {
-                console.log(`findByCredentials username: ${username}, password: ${password}`);
+                winston.log(`findByCredentials username: ${username}, password: ${password}`);
                 bcrypt.compare(password, user.password, (err, res) => {
                   if (res) {
-                    console.log('Password OK');
+                    winston.log('Password OK');
                     resolve(user);
                   } else {
-                    console.log('Wrong password');
+                    winston.log('Wrong password');
                     reject();
                   }
                 });
               });
             })
             .catch((e) => {
-              console.log('Error in findByCredentials', e);
+              winston.log('Error in findByCredentials', e);
             });
         };
 

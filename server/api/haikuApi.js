@@ -1,4 +1,4 @@
-let haikuApi = (app, mongoose, settings) => {
+let haikuApi = (app, mongoose, settings, winston) => {
   var {Image} = require('../models/image'),
         cors = require('cors'),
         {errLogger} = require('../utils/errLogger'),
@@ -6,21 +6,21 @@ let haikuApi = (app, mongoose, settings) => {
 
   // GET images
   app.get('/api/haiku', (req, res)=>{
-    console.log('GET haiku');
+    winston.info('GET haiku');
     Image.find({display: true}).sort({isPriority: 1, created: 1})
       .then((images)=>{
         res.send({message: 'OK', images: images})
       })
       .catch((err)=>{
-        console.log('Error finding images', err);
+        winston.error('Error finding images', err);
         res.status(404).send(e);
       });
   })
 
   // POST new image
   app.post('/api/haiku', authenticate, (req, res) => {
-    console.log('POST haiku');
-    console.log('Header', req.header);
+    winston.info('POST haiku');
+    winston.info('Header', req.header);
 
     let title = req.body.title;
     let imagePath = req.body.imagePath;
@@ -41,11 +41,11 @@ let haikuApi = (app, mongoose, settings) => {
     });
 
     image.save().then((image)=>{
-      console.log('Image saved');
+      winston.info('Image saved');
       res.send({message: 'OK'});
     })
     .catch((err)=>{
-      errLogger(e);
+      winston.error(e);
       res.status(500).send();
     });
   });

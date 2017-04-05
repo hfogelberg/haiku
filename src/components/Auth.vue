@@ -64,7 +64,7 @@
         let url = API_ROOT_URL + '/users/signup';
         console.log('Signup api url: ' + url);
 
-        axios.post(url + '/users/signup', {
+        axios.post(url, {
           username: this.username,
           password: this.password
         })

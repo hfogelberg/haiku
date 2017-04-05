@@ -30,8 +30,9 @@
     },
     methods: {
       login() {
+        console.log('Login');
         let url = API_ROOT_URL + '/users/login';
-        console.log(url);
+        console.log('Login api url: ' + url);
 
         axios.post(url, {
           username: this.username,
@@ -54,12 +55,15 @@
           this.$router.push('/new-haiku');
         })
         .catch((err)=> {
-          alert(err)
-          console.log(err);
+          console.log('Error logging in', err);
         });
       },
 
       signup() {
+        console.log('Sign up ');
+        let url = API_ROOT_URL + '/users/signup';
+        console.log('Sign up url: ' + url);
+
         axios.post(root + '/users/signup', {
           username: this.username,
           password: this.password
@@ -80,7 +84,7 @@
           this.$store.dispatch('setUser', payload);
         })
         .catch((err)=> {
-          console.log(err);
+          console.log('Error signing up', err);
         });
       }
     }

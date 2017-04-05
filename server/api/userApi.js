@@ -1,7 +1,6 @@
 let userApi = (app, mongoose, winston) => {
   let {User} = require('../models/user'),
-        {errLogger} = require('../utils/errLogger'),
-        {authenticate} = require('../middleware/authenticate');
+       {authenticate} = require('../middleware/authenticate');
 
   // POST - sign up
   app.post('/api/users/signup', (req, res)=>{

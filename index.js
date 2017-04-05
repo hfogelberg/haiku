@@ -41,7 +41,16 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', express.static(__dirname + '/'));
-api(app, mongoose, settings, winston );
+api(app, mongoose, winston );
+
+
+// Logging api calls
+app.use((req, res, next) => {
+  const now = new Date().toString();
+  const logMsg = `${now}: ${req.method} ${req.url}\n`;
+  winston.info(logMsg);
+  next();
+});
 
 app.listen(port, ()=>{
   winston.info('Listening on port ' + port);

@@ -28,7 +28,7 @@ if (settings.IS_LOCAL) {
   dbUri = 'mongodb://localhost:27017/haiku'
 } else {
   winston.info('Hooking up to prod Db');
-  dbUri = 'mongodb://172.17.0.5'
+  dbUri = 'mongodb://172.17.0.3:27017'
 }
 
 winston.info('Db connection to open: ' + dbUri);

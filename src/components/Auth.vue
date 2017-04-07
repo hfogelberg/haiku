@@ -40,7 +40,8 @@
         })
         .then((res) => {
           let data = res.data;
-
+          console.log('We have a user', data);
+          
           localStorage.setItem('haikuUserName', this.username);
           localStorage.setItem('haikuUserId', data.userId);
           localStorage.setItem('haikuToken', data.token);
@@ -52,7 +53,7 @@
           }
 
           this.$store.dispatch('setUser', payload);
-          this.$router.push('/new-haiku');
+          this.$router.push('/admin');
         })
         .catch((err)=> {
           console.log('Error logging in', err);
@@ -82,6 +83,7 @@
           }
 
           this.$store.dispatch('setUser', payload);
+          this.$router.push('/admin');
         })
         .catch((err)=> {
           console.log('Error signing up', err);

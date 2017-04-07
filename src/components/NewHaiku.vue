@@ -38,11 +38,11 @@
 
 <script>
 var axios = require('axios');
-if (process.env.NODE_ENV === 'development') {
-  let root = 'http://localhost:8081/api/'
-}
 
 export default {
+
+  let {API_ROOT_URL} = require('../../config')
+
   data() {
     return {
       title: '',
@@ -73,15 +73,15 @@ export default {
       }
     },
     setImgUrl() {
-      alert('setImgUrl')
       let root = 'http://res.cloudinary.com/ginkgo/image/upload/w_180/'
       this.imageUrl = root + this.imagePath
-      alert(this.imageUrl)
     },
     save() {
       let token = localStorage.getItem('haikuToken');
+      let url = API_ROOT_URL + '/haiku';
+
       axios.defaults.headers.common ['x-auth']  = token
-      axios.post(root + 'haiku', {
+      axios.post(url, {
           title: this.title,
           imagePath: this.imagePath,
           haiku: this.haiku,

@@ -7,6 +7,8 @@ let userApi = (app, mongoose) => {
     let username = req.body.username;
     let password = req.body.password;
 
+    console.log('Signup ' + username + ' ' + password);
+    
     var user = new User({username, password});
     user.save().then(() => {
       return user.generateAuthToken();

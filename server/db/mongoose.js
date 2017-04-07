@@ -9,7 +9,8 @@ if (IS_LOCAL) {
   dbUri = 'mongodb://localhost:27017/haiku'
 } else {
   console.log('Hooking up to prod Db');
-  dbUri = 'mongodb://172.17.0.3:27017'
+  // dbUri = 'mongodb://172.17.0.3:27017'
+  dbUri = 'mongodb://haiku:1d0c29f7fdbfcb4079300dbca7962fb4@dokku-mongo-haiku:27017/haiku'
 }
 
 console.log('Db connection to open: ' + dbUri);

@@ -15,13 +15,13 @@ let userApi = (app, mongoose) => {
         token: token,
         userId: user._id
       });
-    }).catch((e) => {
-      errLogger(e)
+    }).catch((err) => {
+        console.log('POST signup user error', err);
        .then(() => {
-        if (e.code == 11000) {
-          res.status(409).send();
+        if (err.code == 11000) {
+          res.status(409).send(err);
         } else {
-          res.status(400).send();
+          res.status(400).send(err);
         }
        });
      });
@@ -38,6 +38,7 @@ let userApi = (app, mongoose) => {
           res.send({status: 'OK'})
         })
         .catch((err)=> {
+          console.log('POST sign out user err', err);
           res.status(500).send(err);
         });
   });
@@ -52,7 +53,8 @@ let userApi = (app, mongoose) => {
         res.send({statsu: 'OK'})
       })
       .catch((err)=>{
-        res.status(500).send
+        console.log('POST sign out all err', err);
+        res.status(500).send(err);
       });
   });
 
@@ -70,11 +72,12 @@ let userApi = (app, mongoose) => {
                });
              });
            })
-           .catch((e) => {
-             if (e.code === 11000) {
-               res.status(401).send();
+           .catch((err) => {
+             console.log('POST login err', err);
+             if (err.code === 11000) {
+               res.status(401).send(err);
              } else {
-               res.status(400).send(e);
+               res.status(400).send(err);
              }
            });
   });

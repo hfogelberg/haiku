@@ -17,13 +17,11 @@ let userApi = (app, mongoose) => {
       });
     }).catch((err) => {
         console.log('POST signup user error', err);
-       .then(() => {
         if (err.code == 11000) {
           res.status(409).send(err);
         } else {
           res.status(400).send(err);
         }
-       });
      });
   });
 

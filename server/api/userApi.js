@@ -3,7 +3,7 @@ let userApi = (app, mongoose) => {
        {authenticate} = require('../middleware/authenticate');
 
   // POST - sign up
-  app.post('/api/users/signup', (req, res)=>{
+  app.post('users/signup', (req, res)=>{
     let username = req.body.username;
     let password = req.body.password;
 
@@ -42,7 +42,7 @@ let userApi = (app, mongoose) => {
         });
   });
 
-  app.post('/api/users/signoutall', authenticate, (req, res) =>{
+  app.post('users/signoutall', authenticate, (req, res) =>{
     let token = req.headers['x-auth'];
     let userId = req.body.userid;
 
@@ -56,7 +56,7 @@ let userApi = (app, mongoose) => {
   });
 
   // POST - login
-  app.post('/api/users/login', (req, res) => {
+  app.post('users/login', (req, res) => {
     let username = req.body.username.trim();
     let password = req.body.password.trim();
 

@@ -41,7 +41,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', express.static(__dirname + '/'));
-api(app, mongoose, winston );
+api(app, mongoose );
 
 // Logging api calls
 app.use((req, res, next) => {

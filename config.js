@@ -4,7 +4,7 @@ const  CLOUDINARY_API_SECRET = "doHBawwQUw7L2vYVKq5Dl9wbdUE";
 const IS_LOCAL = process.env.NODE_ENV !== 'production';
 const API_ROOT_URL = IS_LOCAL
     ? 'http://localhost:8081/api'
-    : '/api'
+    : 'http://haiku.golizzard.com/api/'
 
 module.exports = {
   CLOUDINARY_CLOUD_NAME,

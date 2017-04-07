@@ -1,11 +1,11 @@
-let api = (app, mongoose, cloudinary) => {
-  let {userApi} = require('./userApi');
-  let {haikuApi} = require('./haikuApi');
+let api = (app, mongoose) => {
+  let {userApi} = require('./userApi'),
+       {haikuApi} = require('./haikuApi');
 
   userApi(app, mongoose);
   haikuApi(app, mongoose);
 
-  app.get('http://haiku.golizzard.com/api/', (req, res) => {
+  app.get('/api/', (req, res) => {
     res.send({'message': 'API is alive'});
   });
 };

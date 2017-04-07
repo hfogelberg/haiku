@@ -1,4 +1,4 @@
-let haikuApi = (app, mongoose, settings) => {
+let haikuApi = (app, mongoose) => {
   var {Image} = require('../models/image'),
         cors = require('cors'),
         {errLogger} = require('../utils/errLogger'),
@@ -11,7 +11,7 @@ let haikuApi = (app, mongoose, settings) => {
         res.send({message: 'OK', images: images})
       })
       .catch((err)=>{
-        res.status(404).send(e);
+        res.status(404).send(err);
       });
   })
 
